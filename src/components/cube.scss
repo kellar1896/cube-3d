@@ -29,6 +29,15 @@
       transform: rotateY(180deg) translateZ(100px);
     }
 
+    & .cube3d__slide_container:nth-child(5) {
+      transform: rotateX(90deg) translateZ(-350px);
+    }
+
+    .cube3d__bottom_face {
+      height: 190px;
+      width: 250px;
+    }
+
     .cube3d__slide_container {
       position: absolute;
       transform-style: preserve-3d;
@@ -49,5 +58,4 @@
       }
     }
   }
-
 }
