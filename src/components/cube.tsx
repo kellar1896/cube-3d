@@ -70,8 +70,7 @@ const Cube3D = ({ slides }: { slides: slidesType }) => {
             </div>
           );
         })}
-        <div className="cube3d__slide_container cube3d__bottom_face bg-black bg-opacity-25 ">
-
+        <div className="cube3d__slide_container cube3d__bottom_face shadow-2xl bg-black bg-opacity-25 backdrop-blur-sm">
         </div>
       </div>
     </div>
