@@ -9,7 +9,36 @@ type slidesType = {
 
 const Cube3D = ({ slides }: { slides: slidesType }) => {
   const swiperRef = useRef<HTMLDivElement>(null);
-  
+  const [angleToRotate, setAngleToRotate] = useState(0);
+  const [velocity, setVelocity] = useState(0);
+
+  let lastMouseX = 0;
+  let lastTimestamp = 0;
+
+  const handleMouseMove = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (e.clientX === 0) return;
+    const currentTime = Date.now();
+    const deltaX = e.clientX - lastMouseX;
+    const deltaT = currentTime - lastTimestamp;
+    setVelocity(deltaX / deltaT);
+    setAngleToRotate(e.clientX);
+    lastMouseX = e.clientX;
+    lastTimestamp = currentTime;
+  };
+
+  const handleDragEnd = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const timer = setInterval(() => {
+      setAngleToRotate((prevAngle) => {
+        const newAngle = prevAngle * 0.65 - velocity * 4;
+        return Math.round(newAngle * 100) / 100;
+      });
+    }, 100);
+    setTimeout(() => {
+      clearInterval(timer);
+    }, 2000);
+  };
 
 
   return (
@@ -17,11 +46,11 @@ const Cube3D = ({ slides }: { slides: slidesType }) => {
       <div
         className="cube3d__swipe_container"
         ref={swiperRef}
-        // onDrag={handleMouseMove}
-        // onDragEnd={handleDragEnd}
-        // style={{
-        //   transform: `rotateY(${angleToRotate}deg`
-        // }}
+        onDrag={handleMouseMove}
+        onDragEnd={handleDragEnd}
+        style={{
+          transform: `rotateY(${angleToRotate}deg`
+        }}
       >
         {slides.map((slide, index) => {
           return (
