@@ -1,24 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import backgroundImage from "./assets/background.jpg";
+import obj1 from "./assets/obj_1.png";
+import obj2 from "./assets/obj_2.png";
+import obj3 from "./assets/obj_3.png";
+import obj4 from "./assets/obj_4.png";
+import Cube3D from './components/cube';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex justify-center items-center bg-blue-900 w-screen h-screen'>
+      <Cube3D  slides={[
+          { backgroundImage: backgroundImage, img: obj1 },
+          { backgroundImage: backgroundImage, img: obj2 },
+          { backgroundImage: backgroundImage, img: obj3 },
+          { backgroundImage: backgroundImage, img: obj4 },
+        ]}/>
     </div>
   );
 }
