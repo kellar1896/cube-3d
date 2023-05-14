@@ -10,7 +10,7 @@ import Cube3D from './components/cube';
 
 function App() {
   return (
-    <div className='flex justify-center items-center bg-blue-900 w-screen h-screen'>
+    <div className='flex justify-center items-center bg-cyan-800 w-screen h-screen'>
       <Cube3D  slides={[
           { backgroundImage: backgroundImage, img: obj1 },
           { backgroundImage: backgroundImage, img: obj2 },
