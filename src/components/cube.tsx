@@ -31,7 +31,7 @@ const Cube3D = ({ slides }: { slides: slidesType }) => {
     e.preventDefault();
     const timer = setInterval(() => {
       setAngleToRotate((prevAngle) => {
-        const newAngle = prevAngle * 0.65 - velocity * 4;
+        const newAngle = prevAngle * 0.95 - velocity * 4;
         return Math.round(newAngle * 100) / 100;
       });
     }, 100);
